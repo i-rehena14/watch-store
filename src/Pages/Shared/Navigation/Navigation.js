@@ -9,9 +9,11 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { red } from '@mui/material/colors';
 import WatchTwoToneIcon from '@mui/icons-material/WatchTwoTone';
 import { Container } from '@mui/material';
-import { Link } from 'react-router-dom';
-
+import { Link, NavLink } from 'react-router-dom';
+import useAuth from './../../../hooks/useAuth';
 const Navigation = () => {
+    const { user, logout } = useAuth();
+
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static" sx={{ backgroundColor: red[200] }}>
@@ -30,11 +32,20 @@ const Navigation = () => {
                         <Typography variant="h6" component="div" sx={{ fontFamily: 'Monospace', fontWeight: 'bold' }}>
                             watchTime
                         </Typography>
-                        <Link to="/products" >
+                        <Link to="/home" style={{ marginLeft: 10, marginRight: 10, textDecoration: 'none', color: 'white' }}>
+                            Home
+                        </Link>
+                        <Link to="/products" style={{ textDecoration: 'none', color: 'white' }}>
                             Products
                         </Link>
 
-                        <Button color="inherit">Login</Button>
+                        {user?.email ?
+                            <Button onClick={logout} color="inherit">Logout</Button>
+                            :
+                            <NavLink to="/login" style={{ textDecoration: 'none', color: 'white' }}>
+                                <Button color="inherit">Login</Button>
+                            </NavLink>
+                        }
                     </Toolbar>
                 </Container>
             </AppBar>
