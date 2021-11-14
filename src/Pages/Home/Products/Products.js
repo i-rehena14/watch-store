@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { Container, Typography } from '@mui/material';
@@ -8,47 +8,15 @@ import { red } from '@mui/material/colors';
 import Navigation from '../../Shared/Navigation/Navigation';
 import Footer from '../../Shared/Footer/Footer';
 
-
-
-const products = [
-    {
-        name: 'Red grey steel watch clock',
-        description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum, maxime!',
-        price: 200,
-        img: 'https://image.freepik.com/free-vector/red-grey-steel-watch-clock-chronograph-white_33869-1272.jpg'
-    },
-    {
-        name: 'Red grey steel watch clock',
-        description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum, maxime!',
-        price: 200,
-        img: 'https://image.freepik.com/free-vector/red-grey-steel-watch-clock-chronograph-white_33869-1272.jpg'
-    },
-    {
-        name: 'Red grey steel watch clock',
-        description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum, maxime!',
-        price: 200,
-        img: 'https://image.freepik.com/free-vector/red-grey-steel-watch-clock-chronograph-white_33869-1272.jpg'
-    },
-    {
-        name: 'Red grey steel watch clock',
-        description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum, maxime!',
-        price: 200,
-        img: 'https://image.freepik.com/free-vector/red-grey-steel-watch-clock-chronograph-white_33869-1272.jpg'
-    },
-    {
-        name: 'Red grey steel watch clock',
-        description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum, maxime!',
-        price: 200,
-        img: 'https://image.freepik.com/free-vector/red-grey-steel-watch-clock-chronograph-white_33869-1272.jpg'
-    },
-    {
-        name: 'Red grey steel watch clock',
-        description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum, maxime!',
-        price: 200,
-        img: 'https://image.freepik.com/free-vector/red-grey-steel-watch-clock-chronograph-white_33869-1272.jpg'
-    }
-]
 const Products = () => {
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        fetch("http://localhost:5000/allProducts")
+            .then(res => res.json())
+            .then(data => setProducts(data));
+    }, []);
+
     return (
         <>
             <Navigation></Navigation>
@@ -61,6 +29,7 @@ const Products = () => {
                     <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                         {products.map(product =>
                             <Product
+                                key={product._id}
                                 product={product}
                             ></Product>
                         )}

@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 
 const Product = (props) => {
-    const { name, img, description, price } = props.product;
+    const { _id, name, image, description, price } = props.product;
     return (
         <Grid item xs={4} sm={4} md={4}>
             <Card sx={{ minWidth: 275 }}>
@@ -17,8 +17,8 @@ const Product = (props) => {
                     component="img"
                     height="194"
                     style={{ width: 'auto', height: '400px', margin: '0 auto' }}
-                    image={img}
-                    alt="Paella dish"
+                    image={image}
+                    alt=""
                 />
                 <CardContent>
 
@@ -34,7 +34,7 @@ const Product = (props) => {
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Link to="/placeOrder">
+                    <Link to={`/placeOrder/${_id}`}>
                         <Button size="small">Buy Now</Button>
                     </Link>
                 </CardActions>
