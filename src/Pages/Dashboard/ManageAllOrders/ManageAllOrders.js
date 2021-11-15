@@ -9,7 +9,7 @@ const ManageAllOrders = () => {
     const [control, setControl] = useState(false);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/allOrders`)
+        fetch(`https://nameless-depths-17324.herokuapp.com/allOrders`)
             .then(res => res.json())
             .then(data => setOrders(data))
     }, []);
@@ -20,7 +20,7 @@ const ManageAllOrders = () => {
     // console.log(status);
 
     const handleUpdateStatus = (id) => {
-        fetch(`http://localhost:5000/updateStatus/${id}`, {
+        fetch(`https://nameless-depths-17324.herokuapp.com/updateStatus/${id}`, {
             method: "PUT",
             headers: { "content-type": "application/json" },
             body: JSON.stringify({ status }),
@@ -30,7 +30,7 @@ const ManageAllOrders = () => {
     };
 
     const handleDelete = (id, email) => {
-        fetch(`http://localhost:5000/deleteOrder?id=${id}&email=${email}`, {
+        fetch(`https://nameless-depths-17324.herokuapp.com/deleteOrder?id=${id}&email=${email}`, {
             method: "DELETE",
         })
             .then(res => res.json())

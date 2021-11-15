@@ -33,23 +33,23 @@ function App() {
             <PrivateRoute path="/products">
               <Products></Products>
             </PrivateRoute>
-            <PrivateRoute path="/myOrders">
+            {/* <PrivateRoute path="/myOrders">
               <MyOrders></MyOrders>
             </PrivateRoute>
             <PrivateRoute path="/manageProducts">
               <ManageProducts></ManageProducts>
             </PrivateRoute>
-            <PrivateRoute path="/dashboard">
-              <Dashboard></Dashboard>
-            </PrivateRoute>
             <PrivateRoute path="/manageAllOrders">
               <ManageAllOrders></ManageAllOrders>
             </PrivateRoute>
-            <PrivateRoute path="/placeOrder/:productId">
-              <PlaceOrder></PlaceOrder>
-            </PrivateRoute>
             <PrivateRoute path="/addProduct">
               <AddProduct></AddProduct>
+            </PrivateRoute> */}
+            <PrivateRoute path="/dashboard">
+              <Dashboard></Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/placeOrder/:productId">
+              <PlaceOrder></PlaceOrder>
             </PrivateRoute>
           </Switch>
         </Router>

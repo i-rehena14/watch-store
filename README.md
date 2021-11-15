@@ -2,7 +2,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Live Site Link:
+https://watch-store-aa204.web.app/
 
 In the project directory, you can run:
 

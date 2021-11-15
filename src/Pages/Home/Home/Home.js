@@ -1,4 +1,7 @@
-import { Container, Divider, Grid, Typography } from '@mui/material';
+import { Container } from '@mui/material';
+import { Grid } from '@mui/material';
+import { Divider } from '@mui/material';
+import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useEffect, useState } from 'react';
 import Footer from '../../Shared/Footer/Footer';
@@ -13,7 +16,7 @@ const Home = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/allProducts")
+        fetch("https://nameless-depths-17324.herokuapp.com/allProducts")
             .then(res => res.json())
             .then(data => setProducts(data));
     }, []);

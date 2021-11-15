@@ -13,7 +13,7 @@ const PlaceOrder = () => {
     const { user } = useAuth();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/singleProduct/${productId}`)
+        fetch(`https://nameless-depths-17324.herokuapp.com/singleProduct/${productId}`)
             .then(res => res.json())
             .then(data => setProduct(data));
     }, []);
@@ -22,7 +22,7 @@ const PlaceOrder = () => {
         data.email = user.email;
         data.status = "pending";
 
-        fetch("http://localhost:5000/placeOrder", {
+        fetch("https://nameless-depths-17324.herokuapp.com/placeOrder", {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(data),
