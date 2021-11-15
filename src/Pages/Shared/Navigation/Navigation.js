@@ -35,12 +35,19 @@ const Navigation = () => {
                         <Link to="/home" style={{ marginLeft: 10, marginRight: 10, textDecoration: 'none', color: 'white' }}>
                             Home
                         </Link>
-                        <Link to="/products" style={{ textDecoration: 'none', color: 'white' }}>
+                        <Link to="/products" style={{ marginLeft: 10, marginRight: 10, textDecoration: 'none', color: 'white' }}>
                             Products
                         </Link>
+                        {user.email && <span style={{ backgroundColor: 'white', color: 'black', padding: '5px' }}> {user.displayName} </span>}
 
                         {user?.email ?
-                            <Button onClick={logout} color="inherit">Logout</Button>
+                            <Box>
+                                <NavLink to="/dashboard" style={{ textDecoration: 'none', color: 'white' }}>
+                                    <Button color="inherit">Dashboard</Button>
+                                </NavLink>
+
+                                <Button onClick={logout} color="inherit">Logout</Button>
+                            </Box>
                             :
                             <NavLink to="/login" style={{ textDecoration: 'none', color: 'white' }}>
                                 <Button color="inherit">Login</Button>

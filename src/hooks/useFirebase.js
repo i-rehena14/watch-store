@@ -21,6 +21,9 @@ const useFirebase = () => {
                 const newUser = { email, displayName: name };
                 setUser(newUser);
 
+                //save user to db
+                saveUser(email, name);
+
                 updateProfile(auth.currentUser, {
                     displayName: name
                 }).then(() => {
@@ -70,6 +73,16 @@ const useFirebase = () => {
             // An error happened.
         })
             .finally(() => setIsLoading(false));
+    }
+
+    const saveUser = (email, displayName) => {
+        const user = { email, displayName };
+        fetch('http://localhost:5000/users', {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify(user)
+        })
+            .then()
     }
 
     return {

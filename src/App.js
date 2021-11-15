@@ -8,6 +8,10 @@ import AuthProvider from './contexts/AuthProvider/AuthProvider';
 import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
 import PlaceOrder from './Pages/PlaceOrder/PlaceOrder';
 import AddProduct from './Pages/Dashboard/AddProduct/AddProduct';
+import MyOrders from './Pages/Dashboard/MyOrders/MyOrders';
+import ManageProducts from './Pages/Dashboard/ManageProducts/ManageProducts';
+import ManageAllOrders from './Pages/Dashboard/ManageAllOrders/ManageAllOrders';
+import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 function App() {
   return (
     <div className="App">
@@ -26,15 +30,27 @@ function App() {
             <Route path="/register">
               <Register></Register>
             </Route>
-            <Route path="/products">
+            <PrivateRoute path="/products">
               <Products></Products>
-            </Route>
-            <Route path="/placeOrder/:productId">
+            </PrivateRoute>
+            <PrivateRoute path="/myOrders">
+              <MyOrders></MyOrders>
+            </PrivateRoute>
+            <PrivateRoute path="/manageProducts">
+              <ManageProducts></ManageProducts>
+            </PrivateRoute>
+            <PrivateRoute path="/dashboard">
+              <Dashboard></Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/manageAllOrders">
+              <ManageAllOrders></ManageAllOrders>
+            </PrivateRoute>
+            <PrivateRoute path="/placeOrder/:productId">
               <PlaceOrder></PlaceOrder>
-            </Route>
-            <Route path="/addProduct">
+            </PrivateRoute>
+            <PrivateRoute path="/addProduct">
               <AddProduct></AddProduct>
-            </Route>
+            </PrivateRoute>
           </Switch>
         </Router>
       </AuthProvider>

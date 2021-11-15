@@ -1,28 +1,40 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { useParams } from 'react-router';
+import useAuth from '../../hooks/useAuth';
 
 const PlaceOrder = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const { productId } = useParams();
 
+    const [success, setSuccess] = useState(false);
     const [product, setProduct] = useState({});
+
+    const { user } = useAuth();
 
     useEffect(() => {
         fetch(`http://localhost:5000/singleProduct/${productId}`)
             .then(res => res.json())
             .then(data => setProduct(data));
     }, []);
-    console.log(product);
+    //  console.log(product);
     const onSubmit = data => {
-        // fetch("http://localhost:5000/addProduct", {
-        //     method: "POST",
-        //     headers: { "content-type": "application/json" },
-        //     body: JSON.stringify(data),
-        // })
-        //     .then((res) => res.json())
-        //     .then((result) => console.log(result))
-        // console.log(data)
+        data.email = user.email;
+        data.status = "pending";
+
+        fetch("http://localhost:5000/placeOrder", {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify(data),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.insertedId) {
+                    setSuccess(true);
+                    alert('Placed order successfully!!');
+                }
+            })
+        console.log(data);
     };
     return (
         <div>
@@ -33,11 +45,6 @@ const PlaceOrder = () => {
             <p>{product.description}</p>
             <h4>{product.rating}</h4>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <input
-                    {...register("email")}
-                    placeholder="Email"
-                />
-                <br />
                 <input
                     {...register("name", { required: true })}
                     defaultValue={product.name}
