@@ -30,7 +30,7 @@ const Product = (props) => {
                     </Typography>
 
                     <Typography variant="body2">
-                        {description}
+                        {description.slice(0, 170)}...
                     </Typography>
                 </CardContent>
                 <CardActions>

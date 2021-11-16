@@ -7,9 +7,9 @@ import React, { useEffect, useState } from 'react';
 import Footer from '../../Shared/Footer/Footer';
 import Navigation from '../../Shared/Navigation/Navigation';
 import Banner from '../Banner/Banner';
-import Products from '../Products/Products';
 import Product from '../Product/Product';
 import { red } from '@mui/material/colors';
+import ShowReviews from './ShowReviews/ShowReviews';
 
 
 const Home = () => {
@@ -42,6 +42,7 @@ const Home = () => {
                     </Grid>
                 </Container>
             </Box>
+            <ShowReviews></ShowReviews>
             <Footer></Footer>
         </div>
     );

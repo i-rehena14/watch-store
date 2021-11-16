@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { useParams } from 'react-router';
 import useAuth from '../../hooks/useAuth';
+import Footer from '../Shared/Footer/Footer';
+import Navigation from '../Shared/Navigation/Navigation';
 
 const PlaceOrder = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
@@ -38,6 +40,7 @@ const PlaceOrder = () => {
     };
     return (
         <div>
+            <Navigation></Navigation>
             <h3>Place Your Order</h3>
             <img src={product.image} alt="" />
             <h3>{product.name}</h3>
@@ -73,6 +76,7 @@ const PlaceOrder = () => {
                 <input type="submit"
                     value="Place Order" />
             </form>
+            <Footer></Footer>
         </div>
     );
 };

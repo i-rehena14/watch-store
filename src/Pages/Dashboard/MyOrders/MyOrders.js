@@ -14,15 +14,20 @@ const MyOrders = () => {
     }, [user?.email, control]);
 
     const handleDelete = (id) => {
-        fetch(`https://nameless-depths-17324.herokuapp.com/cancelOrder/${id}`, {
-            method: "DELETE",
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.deleteCount) {
-                    setControl(!control);
-                }
-            });
+        const proceed = window.confirm("Do you really want to delete?");
+        if (proceed) {
+            fetch(`https://nameless-depths-17324.herokuapp.com/cancelOrder/${id}`, {
+                method: "DELETE",
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount > 0) {
+                        setControl(true);
+                        const remainingOrders = orders.filter(order => order._id !== id);
+                        setOrders(remainingOrders);
+                    }
+                });
+        }
         // console.log(id);
     };
 

@@ -9,7 +9,24 @@ const ManageProducts = () => {
             .then(res => res.json())
             .then(data => setProducts(data));
     }, []);
-    console.log(products);
+
+    const handleDelete = (id) => {
+        const proceed = window.confirm("Do you really want to delete?");
+        if (proceed) {
+            fetch(`http://localhost:5000/deleteProduct/${id}`, {
+                method: "DELETE",
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount > 0) {
+                        const remainingProducts = products.filter(order => order._id !== id);
+                        setProducts(remainingProducts);
+                    }
+                });
+        }
+        // console.log(id);
+    };
+
     return (
         <div>
             <h3>Manage All Products</h3>
@@ -31,7 +48,7 @@ const ManageProducts = () => {
                             <img style={{ width: '100px', height: '100px' }} src={product.image} alt="" />
                             <td>{product.name}</td>
                             <td>${product.price}</td>
-                            <td><button>Delete</button></td>
+                            <td><button onClick={() => handleDelete(product._id)}>Delete</button></td>
                         </tr>
                     </tbody>
                 ))}

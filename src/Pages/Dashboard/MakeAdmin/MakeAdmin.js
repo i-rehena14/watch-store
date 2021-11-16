@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { Button, TextField } from '@mui/material';
+import { Alert, Button, TextField } from '@mui/material';
+import useAuth from '../../../hooks/useAuth';
 const MakeAdmin = () => {
-
     const [email, setEmail] = useState('');
+    const [success, setSuccess] = useState(false);
+
     const handleAdminSubmit = e => {
         const user = { email };
         fetch('https://nameless-depths-17324.herokuapp.com/users/admin', {
@@ -14,6 +16,11 @@ const MakeAdmin = () => {
         })
             .then(res => res.json())
             .then(data => {
+                if (data.modifiedcount > 0) {
+                    console.log(data);
+
+                    setSuccess(true);
+                }
                 console.log(data);
             })
         e.preventDefault();
@@ -23,9 +30,11 @@ const MakeAdmin = () => {
     }
     return (
         <div>
+
             <h3>Make An Admin</h3>
             <form onSubmit={handleAdminSubmit}>
                 <TextField
+                    sx={{ width: '50%' }}
                     id="standard-basic"
                     type="email"
                     onBlur={HandleOnBlur}
@@ -33,6 +42,7 @@ const MakeAdmin = () => {
                     variant="standard" />
                 <Button type="submit" variant="contained" >Make Admin</Button>
             </form>
+            {success && <Alert severity="success">Added Admin SuccessFully!!</Alert>}
         </div>
     );
 };
