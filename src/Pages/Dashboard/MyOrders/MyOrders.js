@@ -40,6 +40,7 @@ const MyOrders = () => {
                 <div>
                     <img src={order.image} alt="" />
                     <h4>{order.name}</h4>
+                    <h5>Status: {order.status}</h5>
                     <h5>${order.price}</h5>
                     <button onClick={() => handleDelete(order._id)}>Cancel</button>
                 </div>

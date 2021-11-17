@@ -22,7 +22,7 @@ const ShowReviews = () => {
                         Reviews
                     </Typography>
                     <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-                        {reviews.map(review => <Grid item xs={4} sm={4} md={4}>
+                        {reviews.map(review => <Grid key={review._id} item xs={4} sm={4} md={4}>
                             <Card sx={{ minWidth: 275, p: 4 }}>
                                 <AccountCircleTwoToneIcon sx={{ backgroundColor: '' }} />
                                 <CardContent>
