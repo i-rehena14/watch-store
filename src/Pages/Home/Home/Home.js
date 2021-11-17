@@ -10,6 +10,7 @@ import Banner from '../Banner/Banner';
 import Product from '../Product/Product';
 import { red } from '@mui/material/colors';
 import ShowReviews from './ShowReviews/ShowReviews';
+import AboutUs from '../AboutUs/AboutUs';
 
 
 const Home = () => {
@@ -28,10 +29,10 @@ const Home = () => {
             <Banner></Banner>
             <Box sx={{ flexGrow: 1 }}>
                 <Container>
-                    <Typography variant="h3" component="div">
+                    <Typography sx={{ color: '#8d6e63', mt: 8, mb: 1 }} variant="h4" component="div">
                         Popular Products
                     </Typography>
-                    <Divider sx={{ backgroundColor: red[200], m: 1 }} />
+                    <Divider sx={{ backgroundColor: '#8d6e63', mb: 5 }} />
                     <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                         {sliced.map(product =>
                             <Product
@@ -42,6 +43,7 @@ const Home = () => {
                     </Grid>
                 </Container>
             </Box>
+            <AboutUs></AboutUs>
             <ShowReviews></ShowReviews>
             <Footer></Footer>
         </div>

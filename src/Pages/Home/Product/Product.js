@@ -11,8 +11,8 @@ import { Link } from 'react-router-dom';
 const Product = (props) => {
     const { _id, name, image, description, price } = props.product;
     return (
-        <Grid item xs={4} sm={4} md={4}>
-            <Card sx={{ minWidth: 275 }}>
+        <Grid item xs={4} sm={4} md={4} sx={{}}>
+            <Card sx={{ minWidth: 275, height: 650, textAlign: 'center' }}>
                 <CardMedia
                     component="img"
                     height="194"
@@ -22,20 +22,21 @@ const Product = (props) => {
                 />
                 <CardContent>
 
-                    <Typography variant="h5" component="div">
+                    <Typography variant="h6" component="div">
                         {name}
                     </Typography>
-                    <Typography variant="h5" component="div">
-                        ${price}
-                    </Typography>
+
 
                     <Typography variant="body2">
-                        {description.slice(0, 170)}...
+                        {description.slice(0, 150)}...
                     </Typography>
                 </CardContent>
-                <CardActions>
-                    <Link to={`/placeOrder/${_id}`}>
-                        <Button size="small">Buy Now</Button>
+                <CardActions sx={{ justifyContent: 'space-between', p: 2 }}>
+                    <Typography sx={{ color: '#8d6e63', fontWeight: 'bold' }} variant="h5" component="div">
+                        ${price}
+                    </Typography>
+                    <Link style={{ textDecoration: 'none' }} to={`/placeOrder/${_id}`}>
+                        <Button sx={{ color: '#8d6e63' }} variant="outlined" size="medium">Buy Now</Button>
                     </Link>
                 </CardActions>
             </Card>

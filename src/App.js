@@ -7,14 +7,10 @@ import Register from './Pages/Login/Register/Register';
 import AuthProvider from './contexts/AuthProvider/AuthProvider';
 import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
 import PlaceOrder from './Pages/PlaceOrder/PlaceOrder';
-import AddProduct from './Pages/Dashboard/AddProduct/AddProduct';
-import MyOrders from './Pages/Dashboard/MyOrders/MyOrders';
-import ManageProducts from './Pages/Dashboard/ManageProducts/ManageProducts';
-import ManageAllOrders from './Pages/Dashboard/ManageAllOrders/ManageAllOrders';
 import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 function App() {
   return (
-    <div className="App">
+    <div className="">
       <AuthProvider>
         <Router>
           <Switch>
