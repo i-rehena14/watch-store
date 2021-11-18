@@ -1,6 +1,8 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import useAuth from '../../../hooks/useAuth';
+import { Button, TextField } from '@mui/material';
+
 
 const Review = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
@@ -13,7 +15,7 @@ const Review = () => {
             body: JSON.stringify(data),
         })
             .then((res) => res.json())
-            .then((result) => {
+            .then((data) => {
                 if (data.insertedId) {
                     alert('Review added');
                 }
@@ -22,30 +24,53 @@ const Review = () => {
     };
     return (
         <div>
-            <h1>Give your Review</h1>
+            <h2 style={{ color: 'lightslategrey' }}>Give your Review</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <input
+                <TextField
+                    id="outlined-multiline-flexible"
+                    label="Name"
                     {...register("name", { required: true })}
-                    defaultValue={user.displayName} />
-                <br />
-                <input
+                    defaultValue={user.displayName}
+                    sx={{ width: 300 }}
+                /> <br /><br />
+
+                <TextField
+                    id="outlined-multiline-static"
+                    label="Review"
                     {...register("review", { required: true })}
-                    placeholder="review" />
-                <br />
-                <input
-                    {...register("rating")}
-                    placeholder="Rating"
+
+                    multiline
+                    rows={3}
+                    sx={{ width: 300 }}
                 />
                 <br />
-                <input
+
+                <br />
+                <TextField
+                    id="outlined-textarea"
+                    label="Rate (1-5)"
+                    {...register("rating")}
+                    placeholder="Rating"
+                    sx={{ width: 300 }}
+                /> <br />
+                <br />
+                <br />
+                <TextField
+                    id="date"
+                    label="Date"
+                    type="date"
                     {...register("date", { required: true })}
                     placeholder="date"
-                    type="date" />
+                    sx={{ width: 300 }}
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
+                />
                 <br />
                 {errors.exampleRequired && <span>This field is required</span>}
                 <br />
-                <input type="submit"
-                    value="Submit" />
+                <Button type="submit"
+                    variant="contained" >Submit</Button>
             </form>
         </div>
     );

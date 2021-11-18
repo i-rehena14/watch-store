@@ -8,7 +8,6 @@ import Footer from '../../Shared/Footer/Footer';
 import Navigation from '../../Shared/Navigation/Navigation';
 import Banner from '../Banner/Banner';
 import Product from '../Product/Product';
-import { red } from '@mui/material/colors';
 import ShowReviews from './ShowReviews/ShowReviews';
 import AboutUs from '../AboutUs/AboutUs';
 
@@ -29,7 +28,7 @@ const Home = () => {
             <Banner></Banner>
             <Box sx={{ flexGrow: 1 }}>
                 <Container>
-                    <Typography sx={{ color: '#8d6e63', mt: 8, mb: 1 }} variant="h4" component="div">
+                    <Typography sx={{ color: '#8d6e63', mt: 8, mb: 1, fontWeight: '800px' }} variant="h4" component="div">
                         Popular Products
                     </Typography>
                     <Divider sx={{ backgroundColor: '#8d6e63', mb: 5 }} />

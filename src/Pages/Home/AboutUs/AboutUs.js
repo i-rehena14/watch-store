@@ -23,7 +23,7 @@ const AboutUs = () => {
                     <Button sx={{ mt: 4, color: '#8d6e63' }} variant="outlined" endIcon={<ArrowRightAltIcon />}>Learn More</Button>
                 </Grid>
                 <Grid item xs={12} sm={12} md={6} sx={{ mt: 2 }}>
-                    <img style={{ paddingLeft: 50, border: '5px', borderColor: '#8d6e63', borderBottomLeftRadius: '5px' }} src={img} alt="" />
+                    <img style={{ width: "100%", paddingLeft: 50, border: '5px', borderColor: '#8d6e63', borderBottomLeftRadius: '5px' }} src={img} alt="" />
                 </Grid>
 
             </Grid>

@@ -32,25 +32,25 @@ const Login = () => {
 
                 <Grid container spacing={2}>
                     <Grid item sx={{ mt: 8 }} xs={12} md={6}>
-                        <Typography variant="body1" gutterBottom>Login</Typography>
+                        <Typography variant="h5" gutterBottom>Login</Typography>
                         <form onSubmit={handleLoginSubmit}>
                             <TextField
                                 sx={{ width: '75%', m: 1 }}
-                                id="standard-basic"
+                                id="filled-basic"
                                 label="Your Email"
                                 name="email"
                                 onChange={handleOnChange}
-                                variant="standard" />
+                                variant="filled" />
                             <TextField
                                 sx={{ width: '75%', m: 1 }}
-                                id="standard-basic"
+                                id="filled-basic"
                                 label="Your Password"
                                 type="password"
                                 name="password"
                                 onChange={handleOnChange}
-                                variant="standard" />
+                                variant="filled" />
 
-                            <Button sx={{ width: '75%', m: 1 }} type="submit" variant="contained">Login</Button>
+                            <Button sx={{ width: '75%', m: 1, backgroundColor: '#424242' }} type="submit" variant="contained">Login</Button>
                             <NavLink
                                 style={{ textDecoration: 'none' }}
                                 to="/register">
@@ -62,7 +62,7 @@ const Login = () => {
                         </form>
                     </Grid>
                     <Grid item xs={12} md={6}>
-                        {/* <img style={{ width: '100%' }} src={login} alt="" /> */}
+                        <img style={{ width: '100%', marginTop: '3px' }} src="https://image.freepik.com/free-vector/wristwatch-concept-illustration_114360-6399.jpg" alt="" />
                     </Grid>
                 </Grid>
             </Container>

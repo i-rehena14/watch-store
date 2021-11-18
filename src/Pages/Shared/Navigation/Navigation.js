@@ -6,7 +6,6 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import { red } from '@mui/material/colors';
 import WatchTwoToneIcon from '@mui/icons-material/WatchTwoTone';
 import { Container } from '@mui/material';
 import { Link, NavLink } from 'react-router-dom';
@@ -42,6 +41,7 @@ const Navigation = () => {
             color: 'white !important',
             textDecoration: 'none'
         },
+
         navIcon: {
             [theme.breakpoints.up('sm')]: {
                 display: 'none !important'
@@ -71,7 +71,7 @@ const Navigation = () => {
     return (
         <>
             <Box sx={{ flexGrow: 1 }}>
-                <AppBar position="static" sx={{ backgroundColor: red[200] }}>
+                <AppBar position="static" sx={{ backgroundColor: '#a1887f' }}>
                     <Container>
                         <Toolbar>
                             <IconButton
@@ -86,15 +86,26 @@ const Navigation = () => {
                             >
                                 <MenuIcon />
                             </IconButton>
-
-                            <Typography className={navLogo} variant="h6" component="div" sx={{ flexGrow: 1, fontFamily: 'Monospace', fontWeight: 'bold' }}>
-                                <WatchTwoToneIcon sx={{}} /> watchTime
-                            </Typography>
-                            <Box className={navItemContainer}>
-                                <Link className={navItem} to="/home"><Button>Home</Button></Link>
-                                <Link className={navItem} to="/products"><Button>Products</Button></Link>
+                            <Box sx={{
+                                flexGrow: 1,
+                                display: 'flex',
+                                m: 1,
+                                fontFamily: 'Monospace',
+                                fontWeight: 'bold'
+                            }}>
+                                <WatchTwoToneIcon sx={{ mt: 0.6 }} />
+                                <Typography className={navLogo} variant="h6"
+                                    component="div" sx={{ mb: 2 }} >
+                                    watchTime
+                                </Typography>
                             </Box>
-                            {user.email && <span className={navItemContainer} style={{ backgroundColor: 'white', color: 'black', padding: '5px' }}> {user.displayName} </span>}
+                            <Box className={navItemContainer}>
+                                <Link className={navItem} to="/home"><Button style={{ color: 'white' }}>Home</Button></Link>
+                                <Link className={navItem} to="/products"><Button style={{ color: 'white' }}>Products</Button></Link>
+                            </Box>
+                            {user.email &&
+                                <h4 className={navItemContainer} style={{ backgroundColor: 'white', color: 'black', padding: '10px', borderRadius: '5px' }}> {user.displayName} </h4>
+                            }
 
                             {user?.email ?
                                 <Box className={navItemContainer}>
@@ -105,8 +116,8 @@ const Navigation = () => {
                                     <Button onClick={logout} color="inherit">Logout</Button>
                                 </Box>
                                 :
-                                <NavLink to="/login" style={{ textDecoration: 'none', color: 'white' }}>
-                                    <Button color="inherit">Login</Button>
+                                <NavLink to="/login" style={{ padding: 2, backgroundColor: '#a1887f', border: '2px solid white', borderRadius: '2px', textDecoration: 'none', color: 'white' }}>
+                                    <Button color="inherit" sx={{}}>Login</Button>
                                 </NavLink>
                             }
                         </Toolbar>

@@ -10,7 +10,7 @@ import PlaceOrder from './Pages/PlaceOrder/PlaceOrder';
 import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 function App() {
   return (
-    <div className="">
+    <div className="App">
       <AuthProvider>
         <Router>
           <Switch>

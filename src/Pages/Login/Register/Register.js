@@ -35,41 +35,41 @@ const Register = () => {
 
                 <Grid container spacing={2}>
                     <Grid item sx={{ mt: 8 }} xs={12} md={6}>
-                        <Typography variant="body1" gutterBottom>Register</Typography>
+                        <Typography variant="h5" gutterBottom>Register</Typography>
                         {!isLoading && <form onSubmit={handleLoginSubmit}>
                             <TextField
                                 sx={{ width: '75%', m: 1 }}
-                                id="standard-basic"
+                                id="filled-basic"
                                 label="Your Name"
                                 name="name"
                                 onBlur={handleOnBlur}
-                                variant="standard" />
+                                variant="filled" />
                             <TextField
                                 sx={{ width: '75%', m: 1 }}
-                                id="standard-basic"
+                                id="filled-basic"
                                 label="Your Email"
                                 name="email"
                                 type="email"
                                 onBlur={handleOnBlur}
-                                variant="standard" />
+                                variant="filled" />
                             <TextField
                                 sx={{ width: '75%', m: 1 }}
-                                id="standard-basic"
+                                id="filled-basic"
                                 label="Your Password"
                                 type="password"
                                 name="password"
                                 onBlur={handleOnBlur}
-                                variant="standard" />
+                                variant="filled" />
                             <TextField
                                 sx={{ width: '75%', m: 1 }}
-                                id="standard-basic"
+                                id="filled-basic"
                                 label="ReType Your Password"
                                 type="password"
                                 name="password2"
                                 onBlur={handleOnBlur}
-                                variant="standard" />
+                                variant="filled" />
 
-                            <Button sx={{ width: '75%', m: 1 }} type="submit" variant="contained">Register</Button>
+                            <Button sx={{ width: '75%', m: 1, backgroundColor: '#424242' }} type="submit" variant="contained">Register</Button>
                             <NavLink
                                 style={{ textDecoration: 'none' }}
                                 to="/login">
@@ -81,7 +81,7 @@ const Register = () => {
                         {authError && <Alert severity="error">{authError}</Alert>}
                     </Grid>
                     <Grid item xs={12} md={6}>
-                        {/* <img style={{ width: '100%' }} src={login} alt="" /> */}
+                        <img style={{ width: '100%', marginTop: '3px' }} src="https://image.freepik.com/free-vector/wristwatch-concept-illustration_114360-6399.jpg" alt="" />
                     </Grid>
                 </Grid>
 
