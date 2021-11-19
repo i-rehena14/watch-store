@@ -1,6 +1,9 @@
-import { Alert } from '@mui/material';
+import { Alert, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
+import { Button, TextField } from '@mui/material';
+
+
 const AddProduct = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [control, setControl] = useState(false);
@@ -15,7 +18,7 @@ const AddProduct = () => {
             .then((data) => {
                 // console.log(data);
                 if (data.insertedId) {
-                    //alert("Added product Successfully");
+                    // alert("Added product Successfully");
                     setControl(true);
                 }
             })
@@ -23,39 +26,67 @@ const AddProduct = () => {
 
     return (
         <div>
-            <h1>Add product</h1>
+            <Typography variant="h4" sx={{ m: 5, fontFamily: 'cursive' }}>Add a Product</Typography>
 
             <form onSubmit={handleSubmit(onSubmit)}>
-                <input
+                <TextField
+                    id="outlined-multiline-flexible"
+                    label="Name"
                     {...register("name", { required: true })}
-                    placeholder="Name" />
-                <br />
-                <input
+                    sx={{ width: 300 }}
+                />
+
+                <br /><br />
+                <TextField
+                    id="outlined-multiline-flexible"
+                    label="Price"
+                    type="number"
                     {...register("price", { required: true })}
-                    placeholder="price"
-                    type="number" />
-                <br />
-                <input
+                    sx={{ width: 300 }}
+                />
+
+                <br /><br />
+                <TextField
+                    id="outlined-textarea"
+                    label="Rate (1-5)"
                     {...register("rating")}
                     placeholder="Rating"
+                    sx={{ width: 300 }}
                 />
-                <br />
-                <input
+
+                <br /><br />
+                <TextField
+                    id="date"
+                    label="Date"
+                    type="date"
                     {...register("date", { required: true })}
                     placeholder="date"
-                    type="date" />
-                <br />
-                <input
-                    {...register("description", { required: true })}
-                    placeholder="Description" />
-                <br />
+                    sx={{ width: 300 }}
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
+                />
 
-                <input {...register("image", { required: true })}
-                    placeholder="Image Link" />
+                <br /><br />
+                <TextField
+                    id="outlined-multiline-flexible"
+                    label="Description"
+                    {...register("description", { required: true })}
+                    sx={{ width: 300 }}
+                />
+
+                <br /><br />
+                <TextField
+                    id="outlined-multiline-flexible"
+                    label="Image Link"
+                    {...register("image", { required: true })}
+                    sx={{ width: 300 }}
+                /> <br />
+
                 {errors.exampleRequired && <span>This field is required</span>}
                 <br />
-                <input type="submit"
-                    value="Add" />
+                <Button type="submit"
+                    variant="contained" >ADD</Button>
             </form>
             {control && <Alert severity="success">Added Product SuccessFully!!</Alert>}
         </div>

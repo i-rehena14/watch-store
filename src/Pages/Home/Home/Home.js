@@ -28,7 +28,7 @@ const Home = () => {
             <Banner></Banner>
             <Box sx={{ flexGrow: 1 }}>
                 <Container>
-                    <Typography sx={{ color: '#8d6e63', mt: 8, mb: 1, fontWeight: '800px' }} variant="h4" component="div">
+                    <Typography sx={{ fontFamily: 'cursive', color: '#8d6e63', mt: 8, mb: 1, fontWeight: '800px' }} variant="h4" component="div">
                         Popular Products
                     </Typography>
                     <Divider sx={{ backgroundColor: '#8d6e63', mb: 5 }} />

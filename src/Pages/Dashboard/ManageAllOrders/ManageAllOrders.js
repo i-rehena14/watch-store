@@ -1,7 +1,26 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
-import { Link } from 'react-router-dom';
+import { Button, Paper, Table, TableBody, TableCell, tableCellClasses, TableContainer, TableHead, TableRow, TextField, Typography } from '@mui/material';
+import { styled } from '@mui/material/styles';
 
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+    [`&.${tableCellClasses.head}`]: {
+        backgroundColor: theme.palette.common.black,
+        color: theme.palette.common.white,
+    },
+    [`&.${tableCellClasses.body}`]: {
+        fontSize: 14,
+    },
+}));
+
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+    '&:nth-of-type(odd)': {
+        backgroundColor: theme.palette.action.hover,
+    },
+    // hide last border
+    '&:last-child td, &:last-child th': {
+        border: 0,
+    },
+}));
 const ManageAllOrders = () => {
     const [orders, setOrders] = useState([]);
 
@@ -49,24 +68,55 @@ const ManageAllOrders = () => {
 
     return (
 
-        <div >
-            <h2 >All <span >Orders</span> : {orders?.length}</h2>
-            <div >
-                {orders.map(one =>
-                    <div key={one._id}>
-                        <div >
-                            <h4 >{one.name}</h4>
-                            <h5>Email: {one.email}</h5>
-                            <h6>Date: {one.date}</h6>
-                            <h5>${one.price}</h5>
-                            Status : <input onChange={handleStatus} defaultValue={one.status} />(update to 'Shipped')
-                            <button onClick={() => handleUpdateStatus(one._id)} >Update</button><br />
-                            <button onClick={() => handleDelete(one._id)} >Delete</button>
-                        </div>
-                    </div>
-                )}
-            </div>
-        </div>
+        <>
+            <Typography variant="h4" style={{ fontFamily: 'cursive', paddingBottom: 8 }}>
+                Total Orders: {orders.length}
+            </Typography>
+
+            <TableContainer component={Paper}>
+                <Table sx={{ minWidth: 700 }} aria-label="customized table">
+                    <TableHead>
+                        <TableRow>
+                            <StyledTableCell align="left">Date</StyledTableCell>
+                            <StyledTableCell>Email</StyledTableCell>
+                            <StyledTableCell>Image</StyledTableCell>
+                            <StyledTableCell align="left">Name</StyledTableCell>
+                            <StyledTableCell align="left">Price</StyledTableCell>
+                            <StyledTableCell align="left">Status</StyledTableCell>
+                            <StyledTableCell align="left">Action</StyledTableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {orders.map((order) => (
+                            <StyledTableRow key={order._id}>
+                                <StyledTableCell align="left">{order.date}</StyledTableCell>
+                                <StyledTableCell component="th" scope="row">
+                                    {order.email}
+                                </StyledTableCell>
+                                <StyledTableCell component="th" scope="row">
+                                    <img style={{ width: '90px', height: '100px', border: '1px solid gray', borderRadius: '4px' }} src={order.image} alt="" />
+                                </StyledTableCell>
+                                <StyledTableCell align="left">{order.name}</StyledTableCell>
+                                <StyledTableCell align="left">${order.price}</StyledTableCell>
+                                <StyledTableCell align="left">
+                                    Write "Shipped"
+                                    <TextField
+                                        onChange={handleStatus}
+                                        defaultValue={order.status}
+                                    />
+                                </StyledTableCell>
+                                <StyledTableCell align="left">
+                                    <Button onClick={() => handleUpdateStatus(order._id)} style={{ backgroundColor: '#01579b', color: 'white' }}>Update</Button>
+                                    <Button onClick={() => handleDelete(order._id)} style={{ backgroundColor: '#c62828', color: 'white' }}>Delete</Button>
+                                </StyledTableCell>
+                            </StyledTableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </TableContainer>
+
+        </>
+
     );
 };
 

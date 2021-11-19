@@ -13,8 +13,8 @@ const AboutUs = () => {
                     <Typography variant="h6" sx={{ color: '#8d6e63' }}>
                         About Us
                     </Typography>
-                    <Typography variant="h2" sx={{ color: '#8d6e63', mb: 4, fontWeight: "bold" }}>
-                        WELCOME TO WATCHTIME
+                    <Typography variant="h3" sx={{ fontFamily: 'cursive', color: '#8d6e63', mb: 4, fontWeight: "bold" }}>
+                        We Have Five Years of Experience
                     </Typography>
                     <Typography variant="P">
                         WATCHTIME is always providing the great watches. Dealing with us can make your experiences the best.

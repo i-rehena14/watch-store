@@ -1,5 +1,27 @@
+import { Button, Paper, Table, TableBody, TableCell, tableCellClasses, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
+import { styled } from '@mui/material/styles';
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../../hooks/useAuth';
+
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+    [`&.${tableCellClasses.head}`]: {
+        backgroundColor: theme.palette.common.black,
+        color: theme.palette.common.white,
+    },
+    [`&.${tableCellClasses.body}`]: {
+        fontSize: 14,
+    },
+}));
+
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+    '&:nth-of-type(odd)': {
+        backgroundColor: theme.palette.action.hover,
+    },
+    // hide last border
+    '&:last-child td, &:last-child th': {
+        border: 0,
+    },
+}));
 
 const MyOrders = () => {
     const [orders, setOrders] = useState([]);
@@ -32,20 +54,40 @@ const MyOrders = () => {
     };
 
     return (
-        <div>
-            <h3>My Orders</h3>
-            <h5> orders:{orders.length}</h5>
-            <h6>Email:{user.email}</h6>
-            {orders.map(order => (
-                <div>
-                    <img src={order.image} alt="" />
-                    <h4>{order.name}</h4>
-                    <h5>Status: {order.status}</h5>
-                    <h5>${order.price}</h5>
-                    <button onClick={() => handleDelete(order._id)}>Cancel</button>
-                </div>
-            ))}
-        </div>
+        <>
+            <Typography variant="h4" style={{ fontFamily: 'cursive', paddingBottom: 8 }}>
+                Total Orders: {orders.length}
+            </Typography>
+
+            <TableContainer component={Paper}>
+                <Table sx={{ minWidth: 700 }} aria-label="customized table">
+                    <TableHead>
+                        <TableRow>
+                            <StyledTableCell>Image</StyledTableCell>
+                            <StyledTableCell align="left">Name</StyledTableCell>
+                            <StyledTableCell align="left">Price</StyledTableCell>
+                            <StyledTableCell align="left">Status</StyledTableCell>
+                            <StyledTableCell align="left">Action</StyledTableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {orders.map((order) => (
+                            <StyledTableRow key={order._id}>
+                                <StyledTableCell component="th" scope="row">
+                                    <img style={{ width: '90px', height: '100px', border: '1px solid gray', borderRadius: '4px' }} src={order.image} alt="" />
+                                </StyledTableCell>
+                                <StyledTableCell align="left">{order.name}</StyledTableCell>
+                                <StyledTableCell align="left">${order.price}</StyledTableCell>
+                                <StyledTableCell align="left">{order.status}</StyledTableCell>
+                                <StyledTableCell align="left"><Button onClick={() => handleDelete(order._id)} style={{ backgroundColor: '#c62828', color: 'white' }}>Cancel</Button></StyledTableCell>
+                            </StyledTableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </TableContainer>
+
+        </>
+
     );
 };
 

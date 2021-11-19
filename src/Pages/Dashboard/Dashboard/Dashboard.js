@@ -10,7 +10,6 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import { red } from '@mui/material/colors';
 import { Button, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import { Switch, Route, useRouteMatch } from 'react-router-dom';
 import { Link } from 'react-router-dom';
@@ -26,7 +25,6 @@ import useAuth from './../../../hooks/useAuth';
 import AccountCircleTwoToneIcon from '@mui/icons-material/AccountCircleTwoTone';
 import LogoutTwoToneIcon from '@mui/icons-material/LogoutTwoTone';
 import SvgIcon from '@mui/material/SvgIcon';
-import Footer from '../../Shared/Footer/Footer';
 import { makeStyles } from '@mui/styles';
 import PaymentsTwoToneIcon from '@mui/icons-material/PaymentsTwoTone';
 import ReviewsTwoToneIcon from '@mui/icons-material/ReviewsTwoTone';
@@ -244,7 +242,6 @@ function Dashboard(props) {
 
                 </Box>
             </Box>
-            <Footer></Footer>
         </>
     );
 }

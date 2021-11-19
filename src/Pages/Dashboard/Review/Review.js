@@ -24,7 +24,7 @@ const Review = () => {
     };
     return (
         <div>
-            <h2 style={{ color: 'lightslategrey' }}>Give your Review</h2>
+            <h2 style={{ color: 'lightslategrey', fontFamily: 'cursive' }}>Please, Give your Review</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <TextField
                     id="outlined-multiline-flexible"

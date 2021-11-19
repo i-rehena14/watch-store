@@ -95,7 +95,7 @@ const Navigation = () => {
                             }}>
                                 <WatchTwoToneIcon sx={{ mt: 0.6 }} />
                                 <Typography className={navLogo} variant="h6"
-                                    component="div" sx={{ mb: 2 }} >
+                                    component="div" sx={{ mb: 2, fontFamily: 'cursive' }} >
                                     watchTime
                                 </Typography>
                             </Box>
@@ -104,7 +104,7 @@ const Navigation = () => {
                                 <Link className={navItem} to="/products"><Button style={{ color: 'white' }}>Products</Button></Link>
                             </Box>
                             {user.email &&
-                                <h4 className={navItemContainer} style={{ backgroundColor: 'white', color: 'black', padding: '10px', borderRadius: '5px' }}> {user.displayName} </h4>
+                                <h4 className={navItemContainer} style={{ fontFamily: 'cursive', backgroundColor: 'white', color: 'black', padding: '5px', borderRadius: '5px' }}> {user.displayName} </h4>
                             }
 
                             {user?.email ?

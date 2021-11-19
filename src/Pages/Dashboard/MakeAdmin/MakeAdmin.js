@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Alert, Button, TextField } from '@mui/material';
-import useAuth from '../../../hooks/useAuth';
+
 const MakeAdmin = () => {
     const [email, setEmail] = useState('');
     const [success, setSuccess] = useState(false);
@@ -31,7 +31,7 @@ const MakeAdmin = () => {
     return (
         <div>
 
-            <h3>Make An Admin</h3>
+            <h2 style={{ fontFamily: 'cursive' }}>Make An Admin</h2>
             <form onSubmit={handleAdminSubmit}>
                 <TextField
                     sx={{ width: '50%' }}

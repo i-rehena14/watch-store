@@ -1,3 +1,6 @@
+import { Button, Container, Grid, TextField, Typography } from '@mui/material';
+import { Box } from '@mui/system';
+// import Rating from '@mui/material/Rating';
 import React, { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { useParams } from 'react-router';
@@ -39,45 +42,80 @@ const PlaceOrder = () => {
         console.log(data);
     };
     return (
-        <div>
+        <Box>
             <Navigation></Navigation>
-            <h3>Place Your Order</h3>
-            <img src={product.image} alt="" />
-            <h3>{product.name}</h3>
-            <h2>${product.price}</h2>
-            <p>{product.description}</p>
-            <h4>{product.rating}</h4>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <input
-                    {...register("name", { required: true })}
-                    defaultValue={product.name}
-                />
-                <br />
-                <input
-                    {...register("price", { required: true })}
-                    defaultValue={product.price}
-                    type="number" />
-                <br />
-                <input
-                    {...register("address")}
-                    placeholder="Address"
-                />
-                <br />
-                <input
-                    {...register("date", { required: true })}
-                    placeholder="date"
-                    type="date" />
-                <br />
+            <Container>
+                <Typography variant="h4" sx={{ m: 5, fontFamily: 'cursive' }}>Place Your Order</Typography>
+                <Grid container spacing={2}>
+                    <Grid item xs={12} md={6}>
+                        <img style={{ width: '300px', border: '1px solid lightgray', padding: 20 }} src={product.image} alt="" />
+                        <h3 style={{ fontFamily: 'cursive' }}>{product.name}</h3>
+                        <h2>${product.price}</h2>
+                        {/* <h4><Rating name="read-only" precision={0.5} value={product.rating} readOnly /></h4> */}
+                        <p>{product.description}</p>
+                    </Grid>
+                    <Grid item xs={12} md={6}>
+                        <form onSubmit={handleSubmit(onSubmit)}>
+                            <TextField
+                                id="outlined-multiline-flexible"
+                                label="Name"
+                                {...register("name", { required: true })}
+                                value={product.name}
+                                sx={{ width: 300 }}
+                            />
+                            <br /><br />
+                            <TextField
+                                id="outlined-multiline-flexible"
+                                label="Price"
+                                type="number"
+                                {...register("price", { required: true })}
+                                value={product.price}
+                                sx={{ width: 300 }}
+                            />
 
-                <input {...register("image", { required: true })}
-                    defaultValue={product.image} />
-                {errors.exampleRequired && <span>This field is required</span>}
-                <br />
-                <input type="submit"
-                    value="Place Order" />
-            </form>
+                            <br /><br />
+                            <TextField
+                                id="outlined-multiline-flexible"
+                                label="Address"
+                                {...register("address")}
+                                placeholder="Address"
+                                sx={{ width: 300 }}
+                            />
+
+                            <br /><br />
+                            <TextField
+                                id="date"
+                                label="Date"
+                                type="date"
+                                {...register("date", { required: true })}
+                                placeholder="date"
+                                sx={{ width: 300 }}
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}
+                            />
+
+                            <br /><br />
+                            <TextField
+                                id="outlined-multiline-flexible"
+                                label="Image Link"
+                                {...register("image", { required: true })}
+                                value={product.image}
+                                sx={{ width: 300 }}
+                            />
+
+                            {errors.exampleRequired && <span>This field is required</span>}
+                            <br /><br />
+                            <Button type="submit"
+                                variant="contained" >Place Order</Button>
+                        </form>
+                    </Grid>
+                </Grid>
+
+
+            </Container>
             <Footer></Footer>
-        </div>
+        </Box>
     );
 };
 

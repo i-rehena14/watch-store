@@ -8,18 +8,6 @@ import { Button, Grid, Typography } from '@mui/material';
 const Banner = () => {
     return (
         <Box sx={{}} style={{ backgroundImage: `url("${img2}")` }}>
-            {/* <img style={{ width: '100%', mt: 2 }} src={img} alt="" /> */}
-            {/* <div className="container">
-                <div className="banner-content">
-                    <span>New Arrivals</span>
-                    <h1>Denim jackets</h1>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque incidunt repellat vero facilis a magnam dolores sunt maxime hic sapiente.</p>
-                    <button className="btn-banner" >Disover</button>
-                </div>
-                <div className="banner-img">
-                    <img style={{ width: '100%', mt: 2 }} src={img} alt="" />
-                </div>
-            </div> */}
             <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} sx={{ backgroundColor: '#dde5e9b6' }}>
                 <Grid item xs={12} sm={12} md={6} style={{
                     color: '#47313',
@@ -32,18 +20,18 @@ const Banner = () => {
                         fontWeight: 500,
                         letterSpacing: '3px'
                     }}>
-                        About Us
+                        Welcome to watchTime
                     </Typography>
                     <Typography variant="h1" sx={{
                         mb: 10,
                         fontSize: '50px',
                         fontWeight: 600,
                         letterSpacing: '3px',
-                        fontFamily: 'sans-serif',
                         paddingBottom: '0px',
-                        color: '#47313'
+                        color: '#744f4f',
+                        fontFamily: 'cursive'
                     }}>
-                        WELCOME TO WATCHTIME
+                        We Provide Best Watches With High Quality
                     </Typography>
                     <Typography variant="P" style={{
                         marginBottom: '40px',

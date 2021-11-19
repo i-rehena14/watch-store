@@ -4,7 +4,6 @@ import Grid from '@mui/material/Grid';
 import { Container, Typography } from '@mui/material';
 import Product from '../Product/Product';
 import Divider from '@mui/material/Divider';
-import { red } from '@mui/material/colors';
 import Navigation from '../../Shared/Navigation/Navigation';
 import Footer from '../../Shared/Footer/Footer';
 
@@ -22,10 +21,10 @@ const Products = () => {
             <Navigation></Navigation>
             <Box sx={{ flexGrow: 1 }}>
                 <Container>
-                    <Typography variant="h3" component="div">
+                    <Typography sx={{ fontFamily: 'cursive', color: '#8d6e63', mt: 8, mb: 1, fontWeight: '800px' }} variant="h4" component="div">
                         All the Products
                     </Typography>
-                    <Divider sx={{ backgroundColor: red[200], m: 1 }} />
+                    <Divider sx={{ backgroundColor: '#8d6e63', mb: 5 }} />
                     <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                         {products.map(product =>
                             <Product
