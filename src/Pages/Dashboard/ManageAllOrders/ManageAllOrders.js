@@ -39,7 +39,7 @@ const ManageAllOrders = () => {
     // console.log(status);
 
     const handleUpdateStatus = (id) => {
-        fetch(`http://localhost:5000/updateStatus/${id}`, {
+        fetch(`https://nameless-depths-17324.herokuapp.com/updateStatus/${id}`, {
             method: "PUT",
             headers: { "content-type": "application/json" },
             body: JSON.stringify({ status }),
@@ -51,7 +51,7 @@ const ManageAllOrders = () => {
     const handleDelete = (id) => {
         const proceed = window.confirm("Do you really want to delete?");
         if (proceed) {
-            fetch(`http://localhost:5000/deleteOrder/${id}`, {
+            fetch(`https://nameless-depths-17324.herokuapp.com/deleteOrder/${id}`, {
                 method: "DELETE",
             })
                 .then(res => res.json())
