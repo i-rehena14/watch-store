@@ -12,7 +12,7 @@ const Banner = () => {
                 <Grid item xs={12} sm={12} md={6} style={{
                     color: '#47313',
                     paddingTop: '100px',
-                    paddingLeft: '60px',
+                    paddingLeft: '5px',
                     width: '60%'
                 }}>
                     <Typography variant="h6" sx={{
@@ -36,7 +36,8 @@ const Banner = () => {
                     <Typography variant="P" style={{
                         marginBottom: '40px',
                         fontSize: '18px',
-                        letterSpacing: '1px'
+                        letterSpacing: '1px',
+                        paddingLeft: '15px'
                     }}>
                         WATCHTIME is always providing the great watches. Dealing with us can make your experiences the best.
                     </Typography>
